@@ -1,0 +1,53 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+option java_package = "com.leuville.grpc.simple";
+
+/*
+ * Définition du service
+ */
+service Hightunes {
+	rpc SayHello (HelloRequest) returns (HelloReply);
+	rpc QuantiteArticles (google.protobuf.Empty) returns (QuantiteReply);
+}
+
+
+/*
+ * Paramètre
+ */
+message Article {
+	int64 cle =1;
+	enum Type {film = 0; musique = 1; clipt = 2; jeux = 3;};
+	Type type = 4;
+	string text = 5;
+	double prix = 6;
+	int32 dispo = 7;
+}
+
+/*
+message Panier {
+    repeated Article panier = 1;
+}
+
+message ListePanier {
+    map<int32, Panier> listePanier = 1;
+}
+*/
+
+ 
+message HelloRequest {
+  	string name = 1;
+}
+
+
+
+/*
+ * Retour
+ */
+ 
+message HelloReply {
+  	string message = 1;
+}
+
+message QuantiteReply {
+	int32 message = 1;
+}
